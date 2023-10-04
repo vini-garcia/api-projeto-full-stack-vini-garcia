@@ -23,10 +23,11 @@ const loginUserService = async (payload: TLoginRequest): Promise<IToken> => {
 
   const token: string = sign(
     { type_of_account: user!.type_of_account },
-    String(process.env.SECRET_KEY || "senha"),
+    process.env.SECRET_KEY || "senha",
     {
       expiresIn: String(process.env.EXPIRES_IN || "72h"),
       subject: String(user!.id),
+      
     }
   );
 
