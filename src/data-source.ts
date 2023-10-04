@@ -7,7 +7,7 @@ const dataSourceConfig = (): DataSourceOptions => {
   const entitiesPath: string = path.join(__dirname, "./entities/**.{ts,js}");
   const migrationPath: string = path.join(__dirname, "./migrations/**.{ts,js}");
 
-  const dbUrl: string | undefined = process.env.DATABASE_URL;
+  const dbUrl: string | undefined = process.env.DATABASE_URL + "?sslmode=require";
 
   if (!dbUrl) {
     throw new Error("Missing env var: 'DATABASE_URL'");
