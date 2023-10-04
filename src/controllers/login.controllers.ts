@@ -3,7 +3,7 @@ import { IToken } from "../interfaces";
 import { loginUserService } from "../services/users";
 
 const loginUser = async (request: Request, response: Response): Promise<Response> => {
-  const token = await loginUserService(request.body);
+  const token: IToken = await loginUserService(request.body);
 
   return response.status(200).json(token);
 };
