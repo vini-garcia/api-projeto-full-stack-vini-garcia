@@ -17,7 +17,7 @@ const handleError = (
   }
 
   console.error(error);
-  return response.status(500).json({ message: "Internal server error", error });
+  return response.status(500).json({ error });
 };
 
 export default handleError;
