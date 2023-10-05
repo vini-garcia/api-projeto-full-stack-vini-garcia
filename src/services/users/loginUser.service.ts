@@ -25,7 +25,7 @@ const loginUserService = async (payload: TLoginRequest): Promise<IToken> => {
     { type_of_account: user!.type_of_account },
     String(process.env.SECRET_KEY),
     {
-      expiresIn: String(process.env.EXPIRES_IN || "72h"),
+      expiresIn: String(process.env.EXPIRES_IN || "1d"),
       subject: String(user!.id),
     }
   );
