@@ -15,9 +15,9 @@ const verifyIfTokenIsValid = async (
 
   const token: string = tokenRequest.split(" ")[1];
 
-  verify(token, process.env.SECRET_KEY!, (error: any, decoded: any) => {
+  verify(token, process.env.SECRET_KEY || "senha", (error: any, decoded: any) => {
     if (error) {
-      throw new AppError(token, 401);
+      throw new AppError("Invalid token!", 401);
     }
 
     response.locals.tokenId = decoded.sub;
