@@ -5,7 +5,7 @@ import {
   getAllAnnouncementsService,
   getAnnouncementByIdService,
   updateAnnouncementService,
-  getAllAnnouncementsFromUserService
+  getAllAnnouncementsFromUserService,
 } from "../services/announcements";
 import { TannouncementResponse, TannouncementsResponse } from "../interfaces";
 
@@ -18,7 +18,6 @@ const createNewAnnouncement = async (request: Request, response: Response): Prom
     tokenId,
     type_of_account
   );
-
   return response.status(201).json(announcement);
 };
 
@@ -67,5 +66,5 @@ export default {
   destroyAnnouncement,
   getAnnouncementById,
   getAllAnnouncements,
-  getAllAnnouncementsFromUser
+  getAllAnnouncementsFromUser,
 };

@@ -3,7 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { Announcement } from "../../entities";
 import { AppError } from "../../errors";
 import { announcementSchemaResponse } from "../../schemas";
-import { Tannouncement, TannouncementResponse } from "../../interfaces";
+import { TannouncementResponse } from "../../interfaces";
 
 const getAnnouncementByIdService = async (
   announcementId: string
@@ -17,7 +17,7 @@ const getAnnouncementByIdService = async (
     relations: {
       images: true,
       user: true,
-      comments: true
+      comments: true,
     },
   });
 

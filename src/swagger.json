@@ -9,10 +9,6 @@
     {
       "url": "http://localhost:3000",
       "description": "Local Host"
-    },
-    {
-      "url": "https://api-full-stack-vini-garcia.onrender.com/",
-      "description": "API online"
     }
   ],
   "paths": {
@@ -383,7 +379,7 @@
         }
       }
     },
-    "/announcements/user/{id}":{
+    "/announcements/user/{id}": {
       "get": {
         "summary": "List all ads from an user",
         "description": "This route will list all ads from an user",

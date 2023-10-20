@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { imageSchema, imageSchemaRequest, imagesSchemaResponse } from "./image.schemas";
+import { imageSchemaRequest, imagesSchemaResponse } from "./image.schemas";
 import { userSchema } from "./user.schemas";
 import { commentSchema } from "./comment.schemas";
 

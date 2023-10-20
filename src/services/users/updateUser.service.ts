@@ -3,35 +3,42 @@ import { AppDataSource } from "../../data-source";
 import { Address, User } from "../../entities";
 import { userSchemaResponse } from "../../schemas/user.schemas";
 import { TUserResponse, TUserUpdate, Tuser } from "../../interfaces";
+import { AppError } from "../../errors";
 
 const updateUserService = async (
   foundUser: Tuser,
   payload: TUserUpdate
 ): Promise<TUserResponse> => {
-  const userRepo: Repository<User> = AppDataSource.getRepository(User);
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
   const addressRepo: Repository<Address> = AppDataSource.getRepository(Address);
 
-  const userDataRepo: User | null = await userRepo.findOne({
+  const oldUserData = await userRepository.findOne({
     where: {
       id: foundUser.id,
     },
     relations: ["address"],
   });
 
-  const payloadAddress: Address = addressRepo.create({
-    ...userDataRepo!.address,
+  if (!oldUserData) {
+    throw new AppError("User dosnt exists", 409);
+  }
+
+  const newAddress = addressRepo.create({
+    ...oldUserData.address,
     ...payload.address,
   });
 
-  const user: User = userRepo.create({
-    ...userDataRepo!,
+  const user = userRepository.create({
+    ...oldUserData,
     ...payload,
-    address: payloadAddress,
+    address: newAddress,
   });
 
-  await userRepo.save(user);
+  await userRepository.save(user);
 
-  return userSchemaResponse.parse(user);
+  const updatedUser = userSchemaResponse.parse(user);
+
+  return updatedUser;
 };
 
 export { updateUserService };

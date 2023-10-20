@@ -9,7 +9,6 @@ announcementRoutes.get("", announcementControllers.getAllAnnouncements);
 announcementRoutes.get("/:id", announcementControllers.getAnnouncementById);
 announcementRoutes.get("/user/:id", announcementControllers.getAllAnnouncementsFromUser);
 
-
 announcementRoutes.use("", middlewares.verifyIfTokenIsValid);
 
 announcementRoutes.post(

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
-import { Announcement, User, Comment } from "../entities";
+import { Comment } from "../entities";
 import { AppError } from "../errors";
 import { Repository } from "typeorm";
 

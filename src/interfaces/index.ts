@@ -9,6 +9,7 @@ import {
 import { TImage, TImageRequest, TImageResponse, TImages } from "./image.interfaces";
 import {
   Tcomment,
+  TcommentSchemaResponseWithUser,
   TcommentsResponse,
   TcommentRequest,
   TcommentResponse,
@@ -22,6 +23,7 @@ export {
   TUserUpdate,
   IToken,
   Tuser,
+  TcommentSchemaResponseWithUser,
   Tannouncement,
   TannouncementRequest,
   TannouncementResponse,

@@ -5,20 +5,17 @@ import {
   destroyCommentService,
   getAllCommentsFromAnAnnouncementService,
 } from "../services/comments";
-import {
-  Tannouncement,
-  Tcomment,
-  TcommentResponse,
-  TcommentUpdate,
-  TcommentsResponse,
-} from "../interfaces";
+import { TcommentSchemaResponseWithUser, TcommentUpdate } from "../interfaces";
 
 const createNewComment = async (request: Request, response: Response): Promise<Response> => {
   const tokenId: string = response.locals.tokenId;
-  const announcement: any = response.locals.announcement;
+  const announcementId: any = request.params.id;
 
-  const comment: Tcomment = await createCommentService(request.body, tokenId, announcement);
-
+  const comment: TcommentSchemaResponseWithUser = await createCommentService(
+    request.body,
+    tokenId,
+    announcementId
+  );
   return response.status(201).json(comment);
 };
 
@@ -28,7 +25,7 @@ const getAllCommentsFromAnAnnouncement = async (
 ): Promise<Response> => {
   const announcementId: string = request.params.id;
 
-  const comments: TcommentsResponse = await getAllCommentsFromAnAnnouncementService(announcementId);
+  const comments: any = await getAllCommentsFromAnAnnouncementService(announcementId);
 
   return response.status(200).json(comments);
 };

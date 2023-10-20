@@ -11,5 +11,5 @@ export {
   getAnnouncementByIdService,
   updateAnnouncementService,
   getAllAnnouncementsService,
-  getAllAnnouncementsFromUserService
+  getAllAnnouncementsFromUserService,
 };

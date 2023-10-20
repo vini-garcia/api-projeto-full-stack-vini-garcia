@@ -19,7 +19,7 @@ const createNewAnnouncementService = async (
   const userRepo: Repository<User> = AppDataSource.getRepository(User);
 
   const imageData = images.gallery_image_url!;
-  const cover_image_url = images.cover_image_url!;
+  // const cover_image_url = images.cover_image_url!;
 
   const foundUser: User | null = await userRepo.findOneBy({ id: tokenId });
 
@@ -32,13 +32,13 @@ const createNewAnnouncementService = async (
 
   await announcementRepo.save(announcement);
 
-  const coverImageWithId: any = {
-    cover_image_url,
-    gallery_image_url: null,
-    announcement: announcement.id,
-  };
+  // const coverImageWithId: any = {
+  //   // cover_image_url,
+  //   gallery_image_url: null,
+  //   announcement: announcement.id,
+  // };
 
-  await imageRepo.save(coverImageWithId);
+  // await imageRepo.save(coverImageWithId);
 
   for (const gallery_image_url of imageData) {
     const galleryImageWithId: any = {

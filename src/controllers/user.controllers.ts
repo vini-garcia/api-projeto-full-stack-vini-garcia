@@ -1,9 +1,20 @@
 import { Request, Response } from "express";
-import { createNewUserService, destroyUserService, updateUserService } from "../services/users/";
+import {
+  createNewUserService,
+  destroyUserService,
+  getUserService,
+  updateUserService,
+} from "../services/users/";
 import { TUserResponse, Tuser } from "../interfaces";
 
 const createNewUser = async (request: Request, response: Response): Promise<Response> => {
   const user: TUserResponse = await createNewUserService(request.body);
+
+  return response.status(201).json(user);
+};
+
+const getUser = async (request: Request, response: Response): Promise<Response> => {
+  const user: TUserResponse = await getUserService(response.locals.tokenId);
 
   return response.status(201).json(user);
 };
@@ -22,4 +33,4 @@ const destroyUser = async (request: Request, response: Response): Promise<Respon
   return response.status(204).json();
 };
 
-export default { createNewUser, updateUser, destroyUser };
+export default { createNewUser, updateUser, destroyUser, getUser };

@@ -1,6 +1,4 @@
 import { z } from "zod";
-import { announcementSchema } from "./announcement.schemas";
-import { userSchema } from "./user.schemas";
 
 const commentSchema = z.object({
   id: z.string(),
@@ -14,6 +12,26 @@ const commentSchemaRequest = commentSchema.pick({
 
 const commentSchemaResponse = commentSchema;
 
-const commentsSchemaResponse = z.array(commentSchemaResponse);
+const commentsSchemaResponse = commentSchemaResponse
+  .extend({
+    user: z.object({
+      name: z.string(),
+      id: z.string(),
+    }),
+    announcements: z.object({
+      id: z.string(),
+    }),
+  })
+  .array();
+
+export const commentSchemaResponseWithUser = commentSchemaResponse.extend({
+  user: z.object({
+    name: z.string(),
+    id: z.string(),
+  }),
+  announcements: z.object({
+    id: z.string(),
+  }),
+});
 
 export { commentSchema, commentSchemaResponse, commentSchemaRequest, commentsSchemaResponse };

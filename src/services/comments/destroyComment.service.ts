@@ -2,7 +2,6 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Comment } from "../../entities";
 import { AppError } from "../../errors";
-import { Tcomment } from "../../interfaces";
 
 const destroyCommentService = async (commentId: string): Promise<void> => {
   const commentRepo: Repository<Comment> = AppDataSource.getRepository(Comment);

@@ -3,7 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { TannouncementResponse, TannouncementUpdateRequest } from "../../interfaces";
 import { Announcement } from "../../entities";
 import { AppError } from "../../errors";
-import { announcementSchema, announcementSchemaResponse } from "../../schemas";
+import { announcementSchemaResponse } from "../../schemas";
 
 const updateAnnouncementService = async (
   payload: TannouncementUpdateRequest,

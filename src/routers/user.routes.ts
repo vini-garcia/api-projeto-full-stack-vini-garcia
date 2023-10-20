@@ -5,6 +5,8 @@ import { userSchemaRequest, userSchemaUpdate } from "../schemas";
 
 const userRoutes: Router = Router();
 
+userRoutes.get("/me", middlewares.verifyIfTokenIsValid, userControllers.getUser);
+
 userRoutes.post("", middlewares.validateBody(userSchemaRequest), userControllers.createNewUser);
 
 userRoutes.patch(

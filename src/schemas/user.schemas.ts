@@ -34,14 +34,9 @@ const userSchemaResponse = userSchema
   });
 
 const userSchemaUpdate = userSchema
-  .extend({
-    address: addressSchemaUpdate,
-  })
-  .omit({
-    id: true,
-  })
+  .partial()
+  .omit({ id: true })
+  .extend({ address: addressSchemaUpdate })
   .partial();
-
-// const usersSchemaResponse = z.array(userSchemaResponse);
 
 export { userSchema, userSchemaResponse, userSchemaRequest, userSchemaUpdate };

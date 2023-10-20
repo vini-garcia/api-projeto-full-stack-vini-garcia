@@ -17,7 +17,10 @@ const getAllCommentsFromAnAnnouncementService = async (id: string) => {
     where: {
       announcements: { id: id },
     },
-    relations: ["user", "announcements"],
+    relations: {
+      user: true,
+      announcements: true,
+    },
   });
 
   return commentsSchemaResponse.parse(comments);
