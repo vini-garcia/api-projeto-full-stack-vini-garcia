@@ -9,10 +9,6 @@
     {
       "url": "http://localhost:3000",
       "description": "Local Host"
-    },
-    {
-      "url": "https://api-full-stack-vini-garcia.onrender.com/",
-      "description": "API online"
     }
   ],
   "paths": {
@@ -334,7 +330,6 @@
                     "color": "Branco",
                     "type_of_fuel": "Gasolina",
                     "images": {
-                      "cover_image_url": "www.cover.com",
                       "gallery_image_url": [
                         "www.gallery1.com",
                         "www.gallery2.com",

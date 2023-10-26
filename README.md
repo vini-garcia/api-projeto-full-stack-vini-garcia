@@ -28,7 +28,7 @@ Configuração - Siga os passos abaixo para configurar o ambiente de desenvolvim
 Para inciar este projeto, é necessário instalar as dependências requeridas. Portanto, utilize o comando abaixo no terminal na raiz do projeto:
 
 - caso use npm
-  npm run i
+  npm install
 
 - caso use yarn
   yarn
@@ -41,6 +41,14 @@ PORT=application_run_port
 DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<database>
 EXPIRES_IN=<expiration_time>
 SECRET_KEY=<secret_key>
+
+# Gerar migrações.
+
+- caso use npm
+  npm run typeorm migration:generate src/migrations/InitialMigrations -- -d src/data-source.ts
+
+- caso use yarn
+  yarn typeorm migration:generate src/migrations/InitialMigrations -- -d src/data-source.ts
 
 # Rodar migrações.
 
